@@ -6,10 +6,11 @@
 /*   By: afournie <afournie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 16:54:25 by afournie          #+#    #+#             */
-/*   Updated: 2026/06/05 17:20:41 by afournie         ###   ########.fr       */
+/*   Updated: 2026/06/24 12:19:13 by afournie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Brain.hpp"
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
@@ -18,59 +19,59 @@
 
 int main()
 {
-    std::cout << "=== BASIC ANIMALS ===" << std::endl;
+    std::cout << "\n========== ANIMAL ARRAY TEST ==========\n" << std::endl;
 
-    const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
+    const int size = 10;
+    Animal* animals[size];
 
-    std::cout << "\n=== TYPES ===" << std::endl;
-    std::cout << "j type: " << j->getType() << std::endl;
-    std::cout << "i type: " << i->getType() << std::endl;
-    std::cout << "meta type: " << meta->getType() << std::endl;
+    for (int i = 0; i < size / 2; i++)
+        animals[i] = new Dog();
 
-    std::cout << "\n=== SOUNDS (POLYMORPHISM TEST) ===" << std::endl;
-    i->makeSound();   // Cat sound
-    j->makeSound();   // Dog sound
-    meta->makeSound();// Animal sound
+    for (int i = size / 2; i < size; i++)
+        animals[i] = new Cat();
 
-    std::cout << "\n=== MEMORY CLEANUP ===" << std::endl;
-    delete meta;
-    delete j;
-    delete i;
+    std::cout << "\n========== DELETE ANIMALS ==========\n" << std::endl;
 
-    std::cout << "\n=== ARRAY POLYMORPHISM TEST ===" << std::endl;
+    for (int i = 0; i < size; i++)
+        delete animals[i];
 
-    const Animal* zoo[4];
-    zoo[0] = new Dog();
-    zoo[1] = new Cat();
-    zoo[2] = new Dog();
-    zoo[3] = new Cat();
+    std::cout << "\n========== DEEP COPY TEST (DOG) ==========\n" << std::endl;
 
-    for (int k = 0; k < 4; k++)
-    {
-        std::cout << zoo[k]->getType() << " says: ";
-        zoo[k]->makeSound();
-    }
+    Dog originalDog;
+    originalDog.setIdea(0, "I want a bone");
+    originalDog.setIdea(1, "I want to play");
 
-    for (int k = 0; k < 4; k++)
-        delete zoo[k];
+    Dog copiedDog(originalDog);
 
-    std::cout << "\n=== WRONG ANIMALS TEST ===" << std::endl;
+    std::cout << "\nBefore modification :" << std::endl;
+    std::cout << "Original: " << originalDog.getIdea(0) << std::endl;
+    std::cout << "Copy    : " << copiedDog.getIdea(0) << std::endl;
 
-    const WrongAnimal* wa = new WrongAnimal();
-    const WrongAnimal* wc = new WrongCat();
+    copiedDog.setIdea(0, "I want a steak");
 
-    std::cout << wa->getType() << std::endl;
-    std::cout << wc->getType() << std::endl;
+    std::cout << "\nAfter modifying copy :" << std::endl;
+    std::cout << "Original: " << originalDog.getIdea(0) << std::endl;
+    std::cout << "Copy    : " << copiedDog.getIdea(0) << std::endl;
 
-    wa->makeSound();
-    wc->makeSound(); // ❌ will NOT call WrongCat version if no virtual
+    std::cout << "\n========== DEEP COPY TEST (CAT) ==========\n" << std::endl;
 
-    delete wa;
-    delete wc;
+    Cat originalCat;
+    originalCat.setIdea(0, "Sleep all day");
 
-    std::cout << "\n=== END OF TESTS ===" << std::endl;
+    Cat copiedCat;
+    copiedCat = originalCat;
+
+    std::cout << "\nBefore modification :" << std::endl;
+    std::cout << "Original: " << originalCat.getIdea(0) << std::endl;
+    std::cout << "Copy    : " << copiedCat.getIdea(0) << std::endl;
+
+    copiedCat.setIdea(0, "Destroy the sofa");
+
+    std::cout << "\nAfter modifying copy :" << std::endl;
+    std::cout << "Original: " << originalCat.getIdea(0) << std::endl;
+    std::cout << "Copy    : " << copiedCat.getIdea(0) << std::endl;
+
+    std::cout << "\n========== END OF PROGRAM ==========\n" << std::endl;
 
     return 0;
 }

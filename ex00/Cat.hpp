@@ -6,7 +6,7 @@
 /*   By: afournie <afournie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 16:54:21 by afournie          #+#    #+#             */
-/*   Updated: 2026/06/05 17:33:57 by afournie         ###   ########.fr       */
+/*   Updated: 2026/06/24 11:16:08 by afournie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ class Cat : public Animal
 {
 	public:
 		Cat();
+		Cat(const Cat& other);
+		Cat& operator=(const Cat& other);
 		~Cat();
 		void makeSound( void ) const;
 };

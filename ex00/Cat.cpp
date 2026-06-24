@@ -6,7 +6,7 @@
 /*   By: afournie <afournie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 16:54:17 by afournie          #+#    #+#             */
-/*   Updated: 2026/06/05 17:33:53 by afournie         ###   ########.fr       */
+/*   Updated: 2026/06/24 12:10:24 by afournie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,26 @@
 
 Cat::Cat() : Animal()
 {
-	this->type = "Cat";
+	this->_type = "Cat";
+	std::cout << "Cat created" << std::endl;
 	return ;
+}
+
+Cat::Cat(const Cat& other) : Animal(other)
+{
+	*this = other;
+}
+
+Cat& Cat::operator=(const Cat& other)
+{
+	if (this != &other)
+		_type = other._type;
+	return (*this);
 }
 
 Cat::~Cat()
 {
+	std::cout << "Cat destroyed" << std::endl;
 	return ;
 }
 

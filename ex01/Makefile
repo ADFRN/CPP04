@@ -6,7 +6,7 @@
 #    By: afournie <afournie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/05 16:54:28 by afournie          #+#    #+#              #
-#    Updated: 2026/06/05 17:32:32 by afournie         ###   ########.fr        #
+#    Updated: 2026/06/24 13:04:26 by afournie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,20 @@ SRC			=	Animal.cpp 		\
 				Dog.cpp			\
 				main.cpp		\
 				WrongAnimal.cpp	\
-				WrongCat.cpp
+				WrongCat.cpp	\
+				Brain.cpp
+
+INC			=	Animal.hpp 		\
+				Cat.hpp			\
+				Dog.hpp			\
+				WrongAnimal.hpp	\
+				WrongCat.hpp	\
+				Brain.hpp
 
 OBJ			= $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
 CC			= c++
-CFLAGS		= -Wall -Wextra -Werror -std=c++98
+CFLAGS		= -std=c++98 -Wall -Wextra -Werror
 
 RM			= rm -rf
 
@@ -31,7 +39,7 @@ NAME		= Polymorphism
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(INC)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_DIR)/%.o: %.cpp
