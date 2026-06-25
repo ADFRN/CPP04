@@ -13,13 +13,13 @@
 SRC_DIR		= .
 OBJ_DIR		= obj
 
-SRC			=	Animal.cpp 		\
+SRC			=	AAnimal.cpp 	\
 				Cat.cpp			\
 				Dog.cpp			\
 				main.cpp		\
 				Brain.cpp
 
-INC			=	Animal.hpp 		\
+INC			=	AAnimal.hpp 	\
 				Cat.hpp			\
 				Dog.hpp			\
 				Brain.hpp
@@ -31,7 +31,7 @@ CFLAGS		= -std=c++98 -Wall -Wextra -Werror
 
 RM			= rm -rf
 
-NAME		= Polymorphism
+NAME		= Abstract
 
 all: $(NAME)
 

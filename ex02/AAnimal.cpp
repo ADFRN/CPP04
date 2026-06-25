@@ -1,48 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
+/*   AAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afournie <afournie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/05 16:54:30 by afournie          #+#    #+#             */
-/*   Updated: 2026/06/24 11:32:44 by afournie         ###   ########.fr       */
+/*   Created: 2026/06/05 16:54:12 by afournie          #+#    #+#             */
+/*   Updated: 2026/06/24 11:31:24 by afournie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WrongAnimal.hpp"
+#include "AAnimal.hpp"
 
-WrongAnimal::WrongAnimal()
+AAnimal::AAnimal()
 {
-	std::cout << "WrongAnimal created" << std::endl;
+	std::cout << "AAnimal created" << std::endl;
 	return ;
 }
 
-WrongAnimal::~WrongAnimal()
-{
-	std::cout << "WrongAnimal destroyed" << std::endl;
-	return ;
-}
-
-WrongAnimal::WrongAnimal(const WrongAnimal& other)
+AAnimal::AAnimal(const AAnimal& other)
 {
 	*this = other;
 }
 
-WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other)
+AAnimal& AAnimal::operator=(const AAnimal& other)
 {
 	if (this != &other)
+	{
 		_type = other._type;
+	}
 	return (*this);
 }
 
-std::string WrongAnimal::getType() const
+AAnimal::~AAnimal()
 {
-	return (this->_type);
+	std::cout << "AAnimal destroyed" << std::endl;
+	return ;
 }
 
-void WrongAnimal::makeSound() const
+std::string AAnimal::getType() const
 {
-	std::cout << "Je suis un vilain animal" << std::endl;
-	return ;
+	return (this->_type);
 }

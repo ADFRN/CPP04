@@ -65,7 +65,7 @@ int main()
 	std::cout << wc->getType() << std::endl;
 
 	wa->makeSound();
-	wc->makeSound(); // ❌ will NOT call WrongCat version if no virtual
+	wc->makeSound();
 
 	delete wa;
 	delete wc;
